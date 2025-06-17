@@ -1,0 +1,79 @@
+{% extends 'hotel_booking/base.html' %}
+
+{% block title %}Contact Us - Hotel Booking{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-envelope me-2"></i> Contact Us
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Display messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% else %}info{% endif %} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" id="contactForm">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                   value="{% if form_data %}{{ form_data.name }}{% endif %}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                   value="{% if form_data %}{{ form_data.email }}{% endif %}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject"
+                                   value="{% if form_data %}{{ form_data.subject }}{% endif %}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required>{% if form_data %}{{ form_data.message }}{% endif %}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Clear form after successful submission
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if there's a success message
+    const successAlert = document.querySelector('.alert-success');
+    if (successAlert && successAlert.textContent.includes('Message sent successfully')) {
+        // Clear the form
+        document.getElementById('contactForm').reset();
+
+        // Auto-hide success message after 5 seconds
+        setTimeout(function() {
+            if (successAlert) {
+                successAlert.style.transition = 'opacity 0.5s';
+                successAlert.style.opacity = '0';
+                setTimeout(function() {
+                    successAlert.remove();
+                }, 500);
+            }
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}

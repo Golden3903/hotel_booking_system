@@ -1,0 +1,29 @@
+{
+  "labels":[
+    "greeting",
+    "goodbye",
+    "thanks",
+    "room_info",
+    "booking",
+    "prices",
+    "amenities",
+    "location",
+    "check_in_out",
+    "cancellation",
+    "payment",
+    "special_requests",
+    "fallback",
+    "booking_intent",
+    "collect_booking_info",
+    "confirm_booking",
+    "check_availability",
+    "room_recommendation",
+    "room_preferences",
+    "complaint_handling",
+    "special_diet",
+    "transportation",
+    "local_attractions"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}

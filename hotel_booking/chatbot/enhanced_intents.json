@@ -1,0 +1,203 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi", "Hello", "Hey", "Good day", "Greetings", "What's up",
+                "你好", "您好", "早上好", "下午好", "晚上好", "嗨", "喂",
+                "嗨，我想预订房间", "你好，请问有空房吗", "您好，我想咨询一下",
+                "Good morning", "Good afternoon", "Good evening"
+            ],
+            "responses": [
+                "Good day! Welcome to Grand Luxury Hotel. How may I assist you today?",
+                "Hello and welcome! I'm here to help you with your hotel needs. What can I do for you?",
+                "Greetings! Thank you for choosing Grand Luxury Hotel. How may I be of service?",
+                "您好！欢迎来到豪华大酒店。今天我能为您做些什么？",
+                "您好！很高兴为您服务。请问有什么可以帮助您的吗？"
+            ]
+        },
+        {
+            "tag": "room_inquiry",
+            "patterns": [
+                "What rooms do you have", "Tell me about your rooms", "Room types", "Room information",
+                "Available rooms", "Room amenities", "有什么房型", "房间类型有哪些",
+                "介绍一下你们的房间", "房间设施怎么样", "What kind of rooms", "Room options",
+                "Describe your accommodations", "Room features", "房间介绍"
+            ],
+            "responses": [
+                "I'd be delighted to describe our accommodation options! We offer three distinct room categories with comprehensive amenities and professional service.",
+                "Certainly! Let me tell you about our beautiful rooms, each designed for comfort and luxury with modern amenities."
+            ]
+        },
+        {
+            "tag": "amenity_inquiry", 
+            "patterns": [
+                "What amenities do you offer", "Hotel facilities", "Do you have a pool", 
+                "Is breakfast included", "Is there WiFi", "Gym availability", "Spa services",
+                "Restaurant", "有什么设施", "游泳池", "健身房", "餐厅", "早餐", "WiFi",
+                "What facilities", "Hotel services", "Recreation facilities"
+            ],
+            "responses": [
+                "I'm delighted to share our comprehensive amenities! Our hotel offers world-class facilities designed for your comfort and convenience.",
+                "We provide exceptional facilities including dining, recreation, business services, and wellness amenities to ensure a memorable stay."
+            ]
+        },
+        {
+            "tag": "location_inquiry",
+            "patterns": [
+                "Where is the hotel located", "Hotel address", "How to get to the hotel",
+                "Directions", "Is it near the airport", "Distance from city center",
+                "在哪里", "地址", "位置", "怎么去", "距离机场", "市中心",
+                "Location", "Where are you", "How to reach"
+            ],
+            "responses": [
+                "We're perfectly positioned in the heart of the city with convenient access to major attractions and transportation hubs.",
+                "Our prime location offers easy access to shopping, dining, and cultural attractions, with excellent transportation connections."
+            ]
+        },
+        {
+            "tag": "price_inquiry",
+            "patterns": [
+                "How much is it", "What are the rates", "Room prices", "Price list",
+                "How much per night", "多少钱一晚", "房价是多少", "价格表", "收费标准",
+                "Cost", "Pricing", "Rates", "How much does it cost"
+            ],
+            "responses": [
+                "I'd be happy to provide our current rates! Our pricing varies by season and length of stay, with excellent value for our premium services.",
+                "Our competitive rates include comprehensive amenities and services. Let me share our pricing structure with you."
+            ]
+        },
+        {
+            "tag": "booking_intent",
+            "patterns": [
+                "I want to book a room", "Make a reservation", "Book accommodation",
+                "Reserve a room", "How do I book", "Booking process",
+                "我想预订房间", "我要订房", "有空房吗", "可以预订吗",
+                "请问还有房间吗", "我想订一间房", "帮我订个房间",
+                "Book a room", "Make booking", "Reserve"
+            ],
+            "responses": [
+                "I'd be absolutely delighted to assist you with your reservation! Let me help you find the perfect accommodation.",
+                "Wonderful! I'm here to make your booking process smooth and efficient. Let's get started with your reservation."
+            ]
+        },
+        {
+            "tag": "complaint",
+            "patterns": [
+                "There's a problem", "I have a complaint", "The room is not clean",
+                "The WiFi is not working", "有问题", "投诉", "房间不干净", "WiFi不能用",
+                "Problem", "Issue", "Not working", "Disappointed", "Unsatisfied"
+            ],
+            "responses": [
+                "I sincerely apologize for any inconvenience. Your satisfaction is our absolute priority, and I want to resolve this immediately.",
+                "I'm terribly sorry about this issue. Let me personally ensure this is resolved right away and prevent it from happening again."
+            ]
+        },
+        {
+            "tag": "wifi_internet",
+            "patterns": [
+                "WiFi password", "Internet access", "How to connect to wifi",
+                "Is wifi free", "Internet speed", "WiFi不能用", "网络密码",
+                "怎么连接WiFi", "网速怎么样", "有免费网络吗"
+            ],
+            "responses": [
+                "Complimentary high-speed WiFi is available throughout the hotel. I'll provide you with the connection details and ensure you have seamless internet access.",
+                "我们提供免费高速WiFi覆盖整个酒店。我会为您提供连接信息，确保您有完美的网络体验。"
+            ]
+        },
+        {
+            "tag": "housekeeping",
+            "patterns": [
+                "Room cleaning", "Housekeeping service", "When is room cleaned",
+                "Extra towels", "Room service", "清洁服务", "什么时候打扫房间",
+                "需要毛巾", "客房服务", "房间整理"
+            ],
+            "responses": [
+                "Our professional housekeeping team provides daily service with attention to every detail. I can arrange additional services or specific timing as needed.",
+                "我们的专业客房服务团队每天提供细致的清洁服务。我可以根据您的需要安排额外服务或特定时间。"
+            ]
+        },
+        {
+            "tag": "business_services",
+            "patterns": [
+                "Business center", "Meeting rooms", "Conference facilities",
+                "Printing services", "Fax machine", "商务中心", "会议室",
+                "打印服务", "传真", "商务设施"
+            ],
+            "responses": [
+                "Our comprehensive business center operates 24/7 with modern facilities and professional support for all your business needs.",
+                "我们的综合商务中心24小时运营，配备现代化设施和专业支持，满足您的所有商务需求。"
+            ]
+        },
+        {
+            "tag": "spa_wellness",
+            "patterns": [
+                "Spa services", "Massage", "Wellness center", "Beauty treatments",
+                "Relaxation", "水疗服务", "按摩", "美容护理", "放松", "养生"
+            ],
+            "responses": [
+                "Our Serenity Spa offers a tranquil escape with professional treatments designed to rejuvenate your body and mind.",
+                "我们的宁静水疗中心提供宁静的休憩环境，专业护理服务旨在让您身心焕发活力。"
+            ]
+        },
+        {
+            "tag": "fitness_gym",
+            "patterns": [
+                "Gym", "Fitness center", "Exercise equipment", "Personal trainer",
+                "Workout", "健身房", "健身设施", "运动器材", "私人教练", "锻炼"
+            ],
+            "responses": [
+                "Our state-of-the-art fitness center operates 24/7 with premium equipment and professional trainer services available.",
+                "我们最先进的健身中心24小时开放，配备高端设备和专业教练服务。"
+            ]
+        },
+        {
+            "tag": "local_attractions",
+            "patterns": [
+                "附近有什么好玩的地方", "推荐一下当地景点", "周边有什么值得参观的",
+                "有什么当地特色活动", "最近的购物中心在哪里", "有没有适合孩子的地方",
+                "What attractions are nearby", "Things to do around the hotel",
+                "Local sightseeing recommendations", "Shopping areas near hotel",
+                "Family-friendly activities"
+            ],
+            "responses": [
+                "We're surrounded by amazing attractions! Our concierge team can provide detailed recommendations and arrange tours to help you explore the best of our city.",
+                "我们周边有众多精彩景点！我们的礼宾团队可以提供详细推荐并安排游览，帮助您探索城市的精华。"
+            ]
+        },
+        {
+            "tag": "transportation",
+            "patterns": [
+                "酒店提供接机服务吗", "怎么从机场到酒店", "有没有班车",
+                "可以帮我叫出租车吗", "从酒店到市中心怎么走", "有没有公共交通工具到达景点",
+                "Airport shuttle", "Transportation", "How to get here", "Taxi service"
+            ],
+            "responses": [
+                "We provide comprehensive transportation services including airport shuttle, taxi arrangements, and detailed directions to help you navigate the city with ease.",
+                "我们提供全面的交通服务，包括机场班车、出租车安排和详细路线指导，帮助您轻松游览城市。"
+            ]
+        },
+        {
+            "tag": "special_diet",
+            "patterns": [
+                "你们有素食选择吗", "提供清真食品吗", "有无麸质食物选择吗",
+                "我有食物过敏，能否提供特殊餐食", "你们能提供儿童餐吗",
+                "Vegetarian options", "Halal food", "Gluten-free", "Food allergies", "Special dietary needs"
+            ],
+            "responses": [
+                "Our culinary team is delighted to accommodate all dietary requirements including vegetarian, halal, gluten-free, and allergy-specific meals. Please inform us of your needs.",
+                "我们的烹饪团队很乐意满足所有饮食要求，包括素食、清真、无麸质和过敏特殊餐食。请告知我们您的需求。"
+            ]
+        },
+        {
+            "tag": "fallback",
+            "patterns": [],
+            "responses": [
+                "I want to ensure I provide you with the best assistance. Could you please provide a bit more detail about what you're looking for?",
+                "I'm here to help with any questions about our hotel services. Could you please clarify what specific information you need?",
+                "为了更好地为您服务，能否请您详细说明一下您的需求？",
+                "我在这里帮助您解答关于酒店服务的任何问题。请问您需要什么具体信息？"
+            ]
+        }
+    ]
+}

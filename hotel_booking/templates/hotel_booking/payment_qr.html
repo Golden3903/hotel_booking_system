@@ -1,0 +1,66 @@
+{% extends 'hotel_booking/base.html' %}
+
+{% block title %}Payment - Hotel Booking{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h2 class="mb-4 text-primary">Payment Information</h2>
+            
+            <!-- QR Code Display -->
+            <div class="card shadow-lg mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-3">Please scan the QR code to complete your payment</h5>
+                    <div class="qr-container mb-3">
+                        <img src="/media/payment/QR Bank.jpeg" alt="Payment QR Code" class="img-fluid rounded" style="max-width: 300px;">
+                    </div>
+                    <p class="text-muted">Redirecting to confirmation page in <span id="countdown">5</span> seconds...</p>
+                </div>
+            </div>
+            
+            <!-- Booking Details -->
+            <div class="alert alert-info">
+                <p><strong>Room:</strong> {{ booking.room.name }}</p>
+                <p><strong>Duration:</strong> {{ booking.duration }} nights</p>
+                <p><strong>Total Cost:</strong> RM {{ booking.total_cost }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Redirect Script -->
+<script>
+    // Countdown timer and redirect
+    let seconds = 5;
+    const countdownElement = document.getElementById('countdown');
+    
+    const countdown = setInterval(function() {
+        seconds--;
+        countdownElement.textContent = seconds;
+        
+        if (seconds <= 0) {
+            clearInterval(countdown);
+            window.location.href = "{% url 'booking_success' booking_id=booking.id %}";
+        }
+    }, 1000);
+</script>
+
+<!-- Custom Styles -->
+<style>
+    .qr-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .card {
+        border: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .text-primary {
+        color: #007bff !important;
+    }
+</style>
+{% endblock %}

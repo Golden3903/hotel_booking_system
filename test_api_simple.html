@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple API Test</title>
+</head>
+<body>
+    <h1>Simple Chatbot API Test</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result"></div>
+
+    <script>
+        function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            fetch('http://127.0.0.1:8000/hotel_booking/chatbot/api/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'hello',
+                    session: {}
+                })
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                resultDiv.innerHTML = `<h3>Success!</h3><p>${data.message}</p>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `<h3>Error:</h3><p>${error.message}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>

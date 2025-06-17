@@ -1,0 +1,11 @@
+{
+  "labels":[
+    "book_room",
+    "cancel_booking",
+    "check_availability",
+    "ask_price",
+    "greet"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}

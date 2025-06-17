@@ -1,0 +1,348 @@
+{% extends 'hotel_booking/base.html' %}
+
+{% block title %}Home - Hotel Booking{% endblock %}
+
+{% block content %}
+<!-- Display messages -->
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% else %}info{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Banner Section -->
+<div class="jumbotron text-center text-white py-5 mb-5 shadow-lg rounded-3" style="background-image: url('https://cdn.pixabay.com/photo/2016/06/10/01/05/hotel-room-1447201_640.jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-uppercase animate__animated animate__fadeIn animate__delay-1s">
+            Welcome to Our Hotel
+        </h1>
+        <p class="lead text-white animate__animated animate__fadeIn animate__delay-2s" style="font-size: 1.2rem;">
+            Your home away from home, where comfort meets elegance.
+        </p>
+        <a class="btn btn-light btn-lg px-4 py-2 mt-4 shadow animate__animated animate__fadeIn animate__delay-3s" href="{% url 'available_rooms' %}" role="button">
+            Book a Room
+        </a>
+    </div>
+</div>
+
+<!-- Additional CSS Styling for Banner Section -->
+<style>
+    .jumbotron {
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .jumbotron h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .jumbotron p {
+        font-size: 1.2rem;
+        color: #f1f1f1;
+    }
+    .jumbotron .btn {
+        background-color: #ffffff;
+        color: #007bff;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    .jumbotron .btn:hover {
+        background-color: #0056b3;
+        color: #fff;
+        transform: translateY(-3px);
+    }
+    .animate__animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+    .shadow-lg {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    @media (max-width: 767px) {
+        .jumbotron h1 {
+            font-size: 2rem;
+        }
+        .jumbotron p {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<!-- Add CSS Animation Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold text-secondary">Our Featured Rooms</h2>
+    <div class="row g-4">
+        {% for room in rooms %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm border-0">
+                {% if room.image %}
+                    <img src="{{ room.image.url }}" class="card-img-top rounded-top" alt="{{ room.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/400" class="card-img-top rounded-top" alt="{{ room.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title text-primary fw-bold">{{ room.name }}</h5>
+                    <p class="card-text text-muted">{{ room.description|truncatewords:20 }}</p>
+                    <p class="text-muted"><strong>Price:</strong> RM {{ room.price }} per night</p>
+                    <a href="{% url 'room_details' room.id %}" class="btn btn-outline-primary w-100 mt-2">See Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- About Us Section -->
+<section id="about" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h2 class="display-4" style="font-weight: bold; color: #007bff;">About Us</h2>
+                <p class="lead" style="font-size: 18px; color: #6c757d;">Learn more about our hotel and the services we offer.</p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="https://cdn.pixabay.com/photo/2016/03/28/09/34/bedroom-1285156_640.jpg" alt="Hotel Image" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h3 class="h4" style="font-weight: bold; color: #007bff;">Our Mission</h3>
+                <p style="font-size: 16px; color: #495057;">
+                    At Hotel Booking, we strive to provide an exceptional experience for our guests. Whether you’re traveling for business or leisure, we offer comfortable and luxurious rooms, top-notch services, and a memorable stay.
+                </p>
+                <h3 class="h4" style="font-weight: bold; color: #007bff;">Our Services</h3>
+                <ul style="font-size: 16px; color: #495057;">
+                    <li>Wide range of room options tailored to your needs</li>
+                    <li>24/7 customer support and concierge services</li>
+                    <li>Easy online booking with secure payment options</li>
+                    <li>Premium amenities including free Wi-Fi and breakfast</li>
+                    <li>Event spaces and conference facilities for business meetings</li>
+                </ul>
+                <h3 class="h4" style="font-weight: bold; color: #007bff;">Why Choose Us?</h3>
+                <p style="font-size: 16px; color: #495057;">
+                    With a commitment to excellence and customer satisfaction, we ensure that every guest has a comfortable and memorable stay. Our prime location, along with world-class amenities, makes us a top choice for travelers worldwide.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional CSS Styling -->
+<style>
+    #about {
+        background-color: #f8f9fa;
+    }
+    #about .container {
+        max-width: 1200px;
+    }
+    #about .row {
+        margin-top: 20px;
+    }
+    #about .img-fluid {
+        border-radius: 10px;
+    }
+    #about h2 {
+        color: #007bff;
+    }
+    #about ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    #about ul li::before {
+        content: "• ";
+        color: #007bff;
+    }
+    #about h3 {
+        margin-top: 15px;
+    }
+</style>
+
+<!-- Our Services Excellence Section -->
+<section class="services-section py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title text-primary">Our Services Excellence</h2>
+            <p class="section-subtitle text-muted">The dedicated team making your stay extraordinary</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card h-100 p-4 shadow-sm border-0 rounded bg-white">
+                    <div class="service-icon mb-4 text-center">
+                        <i class="fas fa-concierge-bell text-primary fa-3x"></i>
+                    </div>
+                    <div class="service-info text-center">
+                        <h5 class="service-title mb-3">Guest Relations</h5>
+                        <p class="service-description">Our guest relations team has over 10 years of experience in the hospitality industry and ensures that every guest has a memorable stay.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card h-100 p-4 shadow-sm border-0 rounded bg-white">
+                    <div class="service-icon mb-4 text-center">
+                        <i class="fas fa-utensils text-primary fa-3x"></i>
+                    </div>
+                    <div class="service-info text-center">
+                        <h5 class="service-title mb-3">Culinary Excellence</h5>
+                        <p class="service-description">Our head chef creates culinary delights that leave guests wanting more. His passion for cooking brings out the best in local ingredients.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card h-100 p-4 shadow-sm border-0 rounded bg-white">
+                    <div class="service-icon mb-4 text-center">
+                        <i class="fas fa-users text-primary fa-3x"></i>
+                    </div>
+                    <div class="service-info text-center">
+                        <h5 class="service-title mb-3">Guest Experience</h5>
+                        <p class="service-description">Our guest experience team is dedicated to ensuring that every guest's needs are met, providing personalized service and a warm welcome.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements Section -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Our Achievements</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="counter-box">
+                    <i class="bi bi-people-fill display-4 text-primary mb-3"></i>
+                    <h3 class="display-5 fw-bold">1,200+</h3>
+                    <p class="text-muted">Happy Customers</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="counter-box">
+                    <i class="bi bi-door-closed-fill display-4 text-primary mb-3"></i>
+                    <h3 class="display-5 fw-bold">850+</h3>
+                    <p class="text-muted">Rooms Booked</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="counter-box">
+                    <i class="bi bi-star-fill display-4 text-primary mb-3"></i>
+                    <h3 class="display-5 fw-bold">950+</h3>
+                    <p class="text-muted">Positive Reviews</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What Our Guests Say Section -->
+<section class="testimonials-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title text-primary">What Our Guests Say</h2>
+            <p class="section-subtitle text-muted">Don't just take our word for it, hear from our happy customers!</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-card h-100 p-4 shadow-sm border-0 rounded">
+                    <div class="quote-icon mb-3">
+                        <i class="fas fa-quote-left text-primary fa-2x"></i>
+                    </div>
+                    <p class="testimonial-text mb-4">"The stay was absolutely amazing! The rooms were spotless, the service was top-notch, and I loved the convenient location."</p>
+                    <div class="rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <div class="guest-info">
+                        <h6 class="guest-name mb-1">Business Traveler</h6>
+                        <small class="guest-type text-muted">Verified Guest</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-card h-100 p-4 shadow-sm border-0 rounded">
+                    <div class="quote-icon mb-3">
+                        <i class="fas fa-quote-left text-primary fa-2x"></i>
+                    </div>
+                    <p class="testimonial-text mb-4">"An unforgettable experience! The staff went above and beyond our sky-high expectations. We'll definitely visit again!"</p>
+                    <div class="rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <div class="guest-info">
+                        <h6 class="guest-name mb-1">Family Vacation</h6>
+                        <small class="guest-type text-muted">Verified Guest</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-card h-100 p-4 shadow-sm border-0 rounded">
+                    <div class="quote-icon mb-3">
+                        <i class="fas fa-quote-left text-primary fa-2x"></i>
+                    </div>
+                    <p class="testimonial-text mb-4">"Perfect for a weekend getaway! Excellent location, fantastic food, and exceptional customer service throughout our stay."</p>
+                    <div class="rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <div class="guest-info">
+                        <h6 class="guest-name mb-1">Weekend Traveler</h6>
+                        <small class="guest-type text-muted">Verified Guest</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional CSS Styling for Services and Testimonials -->
+<style>
+    .services-section .section-title, .testimonials-section .section-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    .services-section .section-subtitle, .testimonials-section .section-subtitle {
+        font-size: 1.2rem;
+    }
+    .service-card, .testimonial-card {
+        transition: transform 0.3s;
+    }
+    .service-card:hover, .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+
+<script>
+// Auto-hide success messages after 5 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const successAlerts = document.querySelectorAll('.alert-success');
+    successAlerts.forEach(function(alert) {
+        setTimeout(function() {
+            if (alert) {
+                alert.style.transition = 'opacity 0.5s';
+                alert.style.opacity = '0';
+                setTimeout(function() {
+                    alert.remove();
+                }, 500);
+            }
+        }, 5000);
+    });
+});
+</script>
+
+{% endblock %}

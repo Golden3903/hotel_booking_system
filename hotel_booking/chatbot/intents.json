@@ -1,0 +1,273 @@
+{
+    "intents": [{
+            "tag": "greeting",
+            "patterns": [
+                "Hi", "Hello", "Hey", "Good day", "Greetings", "What's up",
+                "你好", "您好", "早上好", "下午好", "晚上好", "嗨", "喂",
+                "嗨，我想预订房间", "你好，请问有空房吗", "您好，我想咨询一下"
+            ],
+            "responses": [
+                "您好！欢迎使用我们的酒店预订服务。今天我能为您做些什么？",
+                "您好！我能如何协助您的酒店预订？",
+                "您好！想预订房间或对我们酒店有疑问吗？",
+                "您好！很高兴为您服务。您是想预订房间还是需要了解酒店信息？"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "Thanks, bye", "Exit", "End"],
+            "responses": ["Goodbye! Thank you for using our hotel booking service.", "Have a great day! Feel free to return if you have more questions.", "Bye! We hope to see you soon at our hotel."]
+        },
+        {
+            "tag": "express_gratitude",
+            "patterns": [
+                "thank you", "thanks", "terima kasih", "thank you so much",
+                "many thanks", "tq", "ty", "thx", "appreciate it",
+                "that's helpful", "thanks for the help", "thanks a lot",
+                "much appreciated", "grateful", "cheers", "thanks mate"
+            ],
+            "responses": [
+                "You're welcome! Let me know if you need help with room booking or hotel info.",
+                "Happy to help! Is there anything else I can assist you with?",
+                "My pleasure! Feel free to ask if you have more questions about our hotel services.",
+                "You're very welcome! I'm here if you need any assistance with bookings or hotel information."
+            ]
+        },
+        {
+            "tag": "room_info",
+            "patterns": [
+                "What rooms do you have", "Tell me about your rooms",
+                "Room types", "Room information", "Available rooms",
+                "Room amenities", "有什么房型", "房间类型有哪些",
+                "介绍一下你们的房间", "房间设施怎么样"
+            ],
+            "responses": [
+                "我们提供多种房型：标准房、豪华房和套房。每种房型都配有免费WiFi、电视和空调。您想了解哪种房型的详细信息？",
+                "我们的酒店有标准房、豪华房和套房。标准房经济实惠，豪华房更宽敞，套房配有独立起居区。您对哪种房型感兴趣？"
+            ]
+        },
+        {
+            "tag": "booking",
+            "patterns": [
+                "I want to book a room", "Make a reservation", "Book accommodation",
+                "Reserve a room", "How do I book", "Booking process",
+                "我想预订房间", "我要订房", "有空房吗", "可以预订吗",
+                "请问还有房间吗", "我想订一间房", "帮我订个房间"
+            ],
+            "responses": [
+                "To book a room, please provide your check-in date, check-out date, and the type of room you're interested in. I can guide you through the process.",
+                "I'd be happy to help you book a room. Could you tell me your preferred dates and room type?",
+                "好的，我很乐意帮您预订房间。请问您计划什么时候入住？",
+                "很高兴为您办理预订。请告诉我您的入住日期。",
+                "好的，我来帮您预订。请问您打算住几天？"
+            ]
+        },
+        {
+            "tag": "prices",
+            "patterns": [
+                "How much is it", "What are the rates", "Room prices",
+                "Price list", "How much per night", "多少钱一晚",
+                "房价是多少", "价格表", "收费标准"
+            ],
+            "responses": [
+                "我们的房价根据房型和季节有所不同。标准房每晚RM 132，豪华房RM 205，套房RM 321。您想了解哪种房型的具体价格？",
+                "标准房每晚RM 132，豪华房RM 205，套房RM 321。具体价格会根据入住日期和预订时长有所调整。"
+            ]
+        },
+        {
+            "tag": "amenities",
+            "patterns": ["What amenities do you offer", "Hotel facilities", "Do you have a pool", "Is breakfast included", "Is there WiFi", "Gym availability"],
+            "responses": ["Our hotel offers free Wi-Fi, a swimming pool, fitness center, spa, and complimentary breakfast. All rooms include air conditioning, TV, and a mini-bar.", "We provide various amenities including free Wi-Fi, swimming pool, 24/7 room service, fitness center, and complimentary breakfast. Is there a specific amenity you're interested in?"]
+        },
+        {
+            "tag": "location",
+            "patterns": ["Where is the hotel located", "Hotel address", "How to get to the hotel", "Directions", "Is it near the airport", "Distance from city center"],
+            "responses": ["Our hotel is located in the heart of the city, just 15 minutes from the airport and 5 minutes from the main shopping district. The exact address is 123 Hotel Street.", "We're centrally located at 123 Hotel Street, with easy access to public transportation. The airport is 15 minutes away, and major attractions are within walking distance."]
+        },
+        {
+            "tag": "check_in_out",
+            "patterns": ["What are the check-in times", "When is check-out", "Check-in policy", "Late check-out", "Early check-in possible", "Check-in check-out times"],
+            "responses": ["Our standard check-in time is 3:00 PM, and check-out is at 11:00 AM. Early check-in and late check-out may be available upon request, subject to availability.", "Check-in begins at 3:00 PM, and check-out is until 11:00 AM. If you need special arrangements, please let us know in advance, and we'll do our best to accommodate your request."]
+        },
+        {
+            "tag": "cancellation",
+            "patterns": ["What is your cancellation policy", "Can I cancel my booking", "Cancellation fee", "Free cancellation", "How to cancel", "Refund policy"],
+            "responses": ["Our cancellation policy allows free cancellation up to 24 hours before your scheduled arrival. Cancellations made later may incur a fee equivalent to one night's stay.", "You can cancel your reservation without charge up to 24 hours before check-in. For later cancellations, a fee may apply. Would you like me to explain the process for cancelling a booking?"]
+        },
+        {
+            "tag": "payment",
+            "patterns": ["Payment methods", "Do you accept credit cards", "Can I pay in cash", "Payment options", "Do I pay now or at the hotel", "Deposit required"],
+            "responses": ["We accept all major credit cards, debit cards, and cash payments. A credit card is required to secure your booking, but you can choose your payment method upon check-in.", "You can pay with credit/debit cards or cash. We require a credit card to guarantee your reservation, but the actual payment can be made when you arrive at the hotel."]
+        },
+        {
+            "tag": "special_requests",
+            "patterns": [
+                "Can I bring my pet", "Do you allow pets",
+                "I need a baby cot", "Can I check in early",
+                "Late checkout possible", "I need wheelchair access",
+                "可以带宠物吗", "需要婴儿床", "可以提前入住吗",
+                "可以延迟退房吗", "有无障碍设施吗"
+            ],
+            "responses": [
+                "我们很乐意满足您的特殊需求。请告诉我具体需要什么，我会为您安排。",
+                "我们可以根据您的需求提供相应的服务。请详细说明您的要求。"
+            ]
+        },
+        {
+            "tag": "fallback",
+            "patterns": [],
+            "responses": [
+                "抱歉，我没有完全理解。您能换个方式说吗？",
+                "我还在学习中。您能详细说明一下吗？",
+                "我不太确定您的意思。您能再解释一下吗？"
+            ]
+        },
+        {
+            "tag": "booking_intent",
+            "patterns": [
+                "I want to book a room", "I'd like to make a reservation",
+                "我想预订房间", "我要订房", "有空房吗", "可以预订吗",
+                "请问还有房间吗", "我想订一间房", "帮我订个房间"
+            ],
+            "responses": [
+                "好的，我很乐意帮您预订房间。请问您计划什么时候入住？",
+                "很高兴为您办理预订。请告诉我您的入住日期。",
+                "好的，我来帮您预订。请问您打算住几天？"
+            ]
+        },
+        {
+            "tag": "collect_booking_info",
+            "patterns": [
+                "My check-in date is",
+                "I'll arrive on",
+                "I want to check out on",
+                "I'll stay until",
+                "I want a standard room",
+                "I prefer the deluxe option",
+                "I'll be staying for 3 nights",
+                "There will be 2 adults"
+            ],
+            "responses": [
+                "Thank you for providing that information. Could you please confirm the following details: [BOOKING_DETAILS]? If correct, I can proceed with your booking.",
+                "I've noted your preferences. To confirm: [BOOKING_DETAILS]. Is this correct?"
+            ]
+        },
+        {
+            "tag": "confirm_booking",
+            "patterns": [
+                "Yes that's correct",
+                "Confirm booking",
+                "That's right",
+                "Please proceed",
+                "Book it",
+                "Yes go ahead"
+            ],
+            "responses": [
+                "Great! I've submitted your booking request. Your booking reference is [BOOKING_ID]. You'll receive a confirmation email shortly.",
+                "Excellent! Your booking has been processed. Your reference number is [BOOKING_ID]. A confirmation has been sent to your email."
+            ]
+        },
+        {
+            "tag": "check_availability",
+            "patterns": [
+                "Do you have rooms available",
+                "Is there availability",
+                "Are you fully booked",
+                "Can I get a room for",
+                "Checking availability",
+                "Are there any vacancies"
+            ],
+            "responses": [
+                "I'd be happy to check availability for you. Could you please specify your desired dates and room type?",
+                "I can check our availability. Please let me know when you plan to arrive, how long you'll stay, and what type of room you prefer."
+            ]
+        },
+        {
+            "tag": "room_recommendation",
+            "patterns": [
+                "Which room is best for a family",
+                "What do you recommend for a couple",
+                "Best room for business trip",
+                "Suggest a room for me",
+                "What's your most popular room",
+                "Which room has the best view"
+            ],
+            "responses": [
+                "For families, I recommend our Deluxe rooms or Suites which offer more space. Couples often prefer our Standard rooms with a view. Business travelers appreciate our Deluxe rooms with work desks and high-speed internet.",
+                "Based on your needs, I would recommend: For families - our spacious Suites; For couples - our Standard rooms with balcony; For business - our Deluxe rooms with dedicated workspace."
+            ]
+        },
+        {
+            "tag": "room_preferences",
+            "patterns": [
+                "I'd like a quiet room",
+                "I need a room with a bathtub",
+                "Do you have ocean view rooms?",
+                "I prefer a room on higher floors",
+                "I need a room close to the elevator",
+                "Do you have family-friendly rooms?"
+            ],
+            "responses": [
+                "I understand your preferences. Please tell me your planned check-in date, and I'll find a room that meets your requirements.",
+                "Thank you for sharing your preferences. We'll do our best to accommodate your requests. When are you planning to check in?"
+            ]
+        },
+        {
+            "tag": "complaint_handling",
+            "patterns": [
+                "There's a problem", "I have a complaint",
+                "The room is not clean", "The WiFi is not working",
+                "有问题", "投诉", "房间不干净", "WiFi不能用"
+            ],
+            "responses": [
+                "非常抱歉给您带来不便。请告诉我具体问题，我会立即处理。",
+                "我们深感抱歉。请详细说明问题，我们会尽快解决。"
+            ]
+        },
+        {
+            "tag": "special_diet",
+            "patterns": [
+                "你们有素食选择吗",
+                "提供清真食品吗",
+                "有无麸质食物选择吗",
+                "我有食物过敏，能否提供特殊餐食",
+                "你们能提供儿童餐吗",
+                "有没有糖尿病患者可以吃的食物"
+            ],
+            "responses": [
+                "我们酒店餐厅提供多种饮食选择，包括素食、清真和无麸质选项。请在预订时注明您的特殊饮食需求，我们的厨师团队会为您准备。",
+                "是的，我们可以满足各种特殊饮食需求。请提前告知我们您的具体要求，我们会妥善安排。"
+            ]
+        },
+        {
+            "tag": "transportation",
+            "patterns": [
+                "酒店提供接机服务吗",
+                "怎么从机场到酒店",
+                "有没有班车",
+                "可以帮我叫出租车吗",
+                "从酒店到市中心怎么走",
+                "有没有公共交通工具到达景点"
+            ],
+            "responses": [
+                "我们酒店提供机场接送服务，需提前24小时预约。此外，前台可以为您安排出租车或提供公共交通信息。请告诉我您的具体需求，我可以为您安排。",
+                "酒店距离主要公共交通站点仅5分钟步行路程，我们也提供接送服务。请提供您的行程细节，我们会为您做出最合适的交通安排。"
+            ]
+        },
+        {
+            "tag": "local_attractions",
+            "patterns": [
+                "附近有什么好玩的地方",
+                "推荐一下当地景点",
+                "周边有什么值得参观的",
+                "有什么当地特色活动",
+                "最近的购物中心在哪里",
+                "有没有适合孩子的地方"
+            ],
+            "responses": [
+                "我们酒店周边有许多著名景点，包括历史博物馆、城市公园和购物中心，都在步行距离内。前台有详细的旅游地图和推荐，您也可以参加我们组织的当地文化体验活动。",
+                "附近有很多适合各年龄段游客的景点。家庭可以选择水族馆或主题公园，文化爱好者可以参观博物馆和艺术馆，购物爱好者则可以前往仅10分钟车程的大型购物中心。"
+            ]
+        }
+    ]
+}

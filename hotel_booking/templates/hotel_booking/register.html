@@ -1,0 +1,151 @@
+{% extends 'hotel_booking/base.html' %}
+
+{% block title %}Register - Hotel Booking{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Create New Account</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                            {{ form.username }}
+                            <div class="form-text text-danger">{{ form.username.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
+                            {{ form.first_name }}
+                            <div class="form-text text-danger">{{ form.first_name.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
+                            {{ form.last_name }}
+                            <div class="form-text text-danger">{{ form.last_name.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                            {{ form.email }}
+                            <div class="form-text text-danger">{{ form.email.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+                            {{ form.password1 }}
+                            <div class="form-text text-danger">{{ form.password1.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+                            {{ form.password2 }}
+                            <div class="form-text text-danger">{{ form.password2.errors }}</div>
+
+                            <!-- Password Requirements -->
+                            <div class="mt-3 p-3 bg-light border rounded">
+                                <h6 class="text-primary mb-2">
+                                    <i class="fas fa-info-circle me-1"></i>Password Requirements:
+                                </h6>
+                                <ul class="mb-2 small">
+                                    <li id="min-length" class="text-muted password-requirement">○ Minimum 8 characters</li>
+                                    <li id="not-numeric" class="text-muted password-requirement">○ Cannot be entirely numeric</li>
+                                    <li id="has-variety" class="text-muted password-requirement">○ Recommended: mix of letters, numbers, and special characters</li>
+                                </ul>
+                                <div id="password-match" class="small text-muted">○ Please confirm password</div>
+                                <div class="small text-muted mt-1">
+                                    <em>Note: Password cannot be too similar to personal information or commonly used passwords</em>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2">Register</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <p class="mb-0">Already have an account? <a href="/hotel_booking/login/">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordField = document.getElementById('{{ form.password1.id_for_label }}');
+    const confirmPasswordField = document.getElementById('{{ form.password2.id_for_label }}');
+
+    if (passwordField) {
+        passwordField.addEventListener('input', function() {
+            validatePassword(this.value);
+        });
+    }
+
+    if (confirmPasswordField) {
+        confirmPasswordField.addEventListener('input', function() {
+            validatePasswordMatch();
+        });
+    }
+
+    function validatePassword(password) {
+        const requirements = document.querySelectorAll('.password-requirement');
+
+        // 检查最少8个字符
+        const minLength = password.length >= 8;
+        updateRequirement('min-length', minLength);
+
+        // 检查不能全部是数字
+        const notAllNumeric = !/^\d+$/.test(password);
+        updateRequirement('not-numeric', notAllNumeric);
+
+        // 检查是否包含大小写字母、数字和特殊字符
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasLowercase = /[a-z]/.test(password);
+        const hasNumber = /\d/.test(password);
+        const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasVariety = (hasUppercase && hasLowercase) || (hasNumber && (hasUppercase || hasLowercase)) || hasSpecial;
+        updateRequirement('has-variety', hasVariety);
+    }
+
+    function updateRequirement(id, isValid) {
+        const element = document.getElementById(id);
+        if (element) {
+            if (isValid) {
+                element.classList.remove('text-muted');
+                element.classList.add('text-success');
+                element.innerHTML = element.innerHTML.replace('○', '✓');
+            } else {
+                element.classList.remove('text-success');
+                element.classList.add('text-muted');
+                element.innerHTML = element.innerHTML.replace('✓', '○');
+            }
+        }
+    }
+
+    function validatePasswordMatch() {
+        const password = passwordField.value;
+        const confirmPassword = confirmPasswordField.value;
+        const matchElement = document.getElementById('password-match');
+
+        if (matchElement) {
+            if (password && confirmPassword) {
+                if (password === confirmPassword) {
+                    matchElement.classList.remove('text-muted', 'text-danger');
+                    matchElement.classList.add('text-success');
+                    matchElement.innerHTML = '✓ Passwords match';
+                } else {
+                    matchElement.classList.remove('text-muted', 'text-success');
+                    matchElement.classList.add('text-danger');
+                    matchElement.innerHTML = '✗ Passwords do not match';
+                }
+            } else {
+                matchElement.classList.remove('text-success', 'text-danger');
+                matchElement.classList.add('text-muted');
+                matchElement.innerHTML = '○ Please confirm password';
+            }
+        }
+    }
+});
+</script>
+
+{% endblock %}
